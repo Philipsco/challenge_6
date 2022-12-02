@@ -71,7 +71,7 @@ public class FilmController {
             @ApiResponse(responseCode = "200", description = "Film updated!",
                     content = {@Content(schema = @Schema(example = "Film updated!"))})
     })
-    @PutMapping("/admin//{film_code}/update")
+    @PutMapping("/admin/{film_code}/update")
     public ResponseEntity<HashMap<String, Object>> updateNameFilm(@PathVariable("film_code") String filmCode, @RequestBody UpdateFilmDTO updateFilm){
         filmServiceImpl.updateNameFilm(filmCode, filmMapping.updateFilm(updateFilm));
         LOG.info("film updated");
@@ -85,7 +85,7 @@ public class FilmController {
             @ApiResponse(responseCode = "202", description = "Film deleted!",
                     content = {@Content(schema = @Schema(example = "Film deleted!"))})
     })
-    @DeleteMapping("/admin//{film_code}")
+    @DeleteMapping("/admin/{film_code}")
     public ResponseEntity<HttpStatus> deleteFilm (@PathVariable("film_code") String filmCode){
         scheduleServiceImpl.deleteSchedule(filmCode);
         filmServiceImpl.deleteFilm(filmCode);

@@ -51,7 +51,7 @@ public class ScheduleController {
             @ApiResponse(responseCode = "202", description = "Film deleted!",
                     content = {@Content(schema = @Schema(example = "Film deleted!"))})
     })
-    @DeleteMapping("/admin//{film_code}")
+    @DeleteMapping("/admin/{film_code}")
     public ResponseEntity<HttpStatus> deleteScheduleFilm(@PathVariable("film_code") String filmCode){
         scheduleServiceImpl.deleteSchedule(filmCode);
         LOG.info("Schedule deleted");

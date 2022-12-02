@@ -18,7 +18,7 @@ public class SeatController {
 
     private static final Logger LOG = LoggerFactory.getLogger(SeatController.class);
 
-    @GetMapping("")
+    @GetMapping("/public")
     public ResponseEntity<HttpStatus> insertSeats() {
         seatServiceImpl.insertSeats();
         LOG.info("Seats has been Inserted");
