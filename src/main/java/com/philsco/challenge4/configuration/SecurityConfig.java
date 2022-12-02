@@ -21,7 +21,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     UserDetailServiceImpl userDetailsService;
 
@@ -55,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/cinema/auth/**").permitAll()
+                .antMatchers("/api/v1/cinema/auth/**").permitAll()
 
                 .antMatchers("/api/v1/cinema/films/admin/**").hasAuthority(ERole.ADMIN.name())
                 .antMatchers("/api/v1/cinema/users/admin/**").hasAuthority(ERole.ADMIN.name())
