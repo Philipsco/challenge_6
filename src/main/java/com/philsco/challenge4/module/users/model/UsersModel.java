@@ -36,4 +36,12 @@ public class UsersModel {
     public UsersModel(Integer userId){
         this.userId=userId;
     }
+
+    public UsersModel(String name, String email, String password) {
+        this.username = name;
+        this.email = email;
+        this.password = password;
+    }
+
+
 }

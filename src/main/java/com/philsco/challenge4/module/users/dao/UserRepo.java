@@ -11,6 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface UserRepo extends JpaRepository<UsersModel, Integer> {
+
+    Boolean existsByUsername(String username);
+
+    Boolean existsByEmail(String email);
+
     @Modifying
     @Query(nativeQuery = true, value = "insert into users(username, email, password) values(:username, :email, :password)")
     void addUser(@Param("username") String username,

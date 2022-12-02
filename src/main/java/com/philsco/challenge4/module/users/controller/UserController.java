@@ -5,6 +5,7 @@ import com.philsco.challenge4.module.films.dto.UpdateFilmDTO;
 import com.philsco.challenge4.module.users.dto.AddUserDTO;
 import com.philsco.challenge4.module.users.dto.UpdateUserDTO;
 import com.philsco.challenge4.module.users.mapping.UserMapping;
+import com.philsco.challenge4.module.users.model.UsersModel;
 import com.philsco.challenge4.module.users.service.UserServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -70,4 +71,12 @@ public class UserController {
         LOG.info("user deleted");
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
+
+    @GetMapping("/public/get-user/{id}")
+    public ResponseEntity<UsersModel> getUserById(@PathVariable("id") Integer userId) {
+        UsersModel user = userServiceImpl.getUserById(userId);
+        LOG.info("User found: {}", user.getUsername());
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
 }
