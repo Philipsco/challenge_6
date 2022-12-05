@@ -66,6 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/cinema/films/public/**").hasAnyAuthority(ERole.ADMIN.name(), ERole.CUSTOMER.name())
                 .antMatchers("/api/v1/cinema/users/public/**").hasAnyAuthority(ERole.ADMIN.name(), ERole.CUSTOMER.name())
 
+                .antMatchers("/cinema-swagger.html").fullyAuthenticated()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
